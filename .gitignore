@@ -1,0 +1,79 @@
+# --------------------------------------------------
+# Git Ignore for Home Assistant Add-on Repository
+# --------------------------------------------------
+# This repo contains an add-on under ssh_reverse_tunnel/
+# Keep only source + metadata. Exclude local dev cruft, secrets,
+# build caches, editor settings, and transient artifacts.
+# --------------------------------------------------
+
+# Editor / IDE
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+*.swo
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Python cache (if any helper scripts appear later)
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Node / Web (future UI experiments)
+node_modules/
+*.tsbuildinfo
+
+# Environments / virtual envs
+.venv/
+venv/
+.env
+.env.*
+.python-version
+
+# Logs & temp
+*.log
+logs/
+/tmp/
+
+# Packaging / archives
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.bak
+
+# Docker / build cache (keep Dockerfile, ignore local outputs)
+build/
+dist/
+# If you export multi-arch manifests locally:
+manifest-*.*
+
+# Coverage / reports
+coverage/
+htmlcov/
+.coverage*
+
+# Secrets / keys (ensure you NEVER commit private keys)
+# The add-on expects base64 values; do not commit decoded files.
+ssh_reverse_tunnel/id_rsa*
+ssh_reverse_tunnel/private_key*
+ssh_reverse_tunnel/known_hosts
+*.b64
+
+# Misc scratch directories
+scratch/
+local/
+
+# GitHub workflow local test overrides
+.github/*.local.yml
+
+# Optional: Uncomment to ignore README drafts
+# README-draft.md
+
+# End of file

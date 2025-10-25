@@ -1,0 +1,46 @@
+name: SSH Reverse Tunnel
+version: "0.1.0"
+slug: ssh_reverse_tunnel
+description: Expose Home Assistant via persistent SSH reverse tunnel (remote port forward).
+url: https://example.com/ssh_reverse_tunnel
+arch:
+  - aarch64
+  - amd64
+  - armv7
+  - armhf
+  - i386
+stage: experimental
+startup: services
+init: false
+homeassistant_api: false
+hassio_api: false
+ingress: false
+map: []
+backup: cold
+apparmor: true
+host_network: false
+full_access: false
+privileged: []
+options:
+  ssh_username: ""
+  ssh_host: ""
+  ssh_private_key_b64: ""
+  ssh_public_key: ""
+  known_hosts_b64: ""
+  remote_port: 8123
+  local_port: 8123
+  local_host: homeassistant
+  extra_ssh_options: ""
+schema:
+  ssh_username: str
+  ssh_host: str
+  ssh_private_key_b64: str
+  ssh_public_key: str
+  known_hosts_b64: str
+  remote_port: int
+  local_port: int
+  local_host: str
+  extra_ssh_options: str
+# No direct ports exposed; reverse tunnel terminates on remote server
+ports: {}
+image: local/ssh_reverse_tunnel-{arch}
