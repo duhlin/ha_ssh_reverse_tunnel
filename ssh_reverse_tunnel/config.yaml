@@ -12,14 +12,7 @@ arch:
 stage: experimental
 startup: services
 init: false
-homeassistant_api: false
-hassio_api: false
-ingress: false
-map: []
 backup: cold
-apparmor: true
-host_network: false
-full_access: false
 privileged: []
 options:
   ssh_username: ""
@@ -43,4 +36,4 @@ schema:
   extra_ssh_options: str
 # No direct ports exposed; reverse tunnel terminates on remote server
 ports: {}
-image: local/ssh_reverse_tunnel-{arch}
+image: ghcr.io/duhlin/ssh_reverse_tunnel-{arch}
