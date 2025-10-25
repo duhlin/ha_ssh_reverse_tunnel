@@ -31,6 +31,8 @@ jobs:
   build:
     name: Build & (optionally) Publish
     runs-on: ubuntu-latest
+    outputs:
+      image_digest: ${{ steps.build_image.outputs.digest }}
     permissions:
       contents: read
       packages: write
@@ -78,13 +80,16 @@ jobs:
           fi
           echo "Will push: $(grep push= $GITHUB_OUTPUT | cut -d= -f2)"
 
-      - name: Build (and maybe push) multi-arch image
+      - name: Build (and maybe push) arm64 image (Raspberry Pi 4)
+        id: build_image
         uses: docker/build-push-action@v6
         with:
           context: ${{ env.ADDON_PATH }}
           file: ${{ env.ADDON_PATH }}/Dockerfile
           push: ${{ steps.decide.outputs.push }}
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/arm64
+          build-args: |
+            BUILD_FROM=ghcr.io/home-assistant/aarch64-base:latest
           provenance: false
           sbom: false
           tags: |
