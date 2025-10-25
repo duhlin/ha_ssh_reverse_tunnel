@@ -1,0 +1,7 @@
+name: SSH Reverse Tunnel Add-on Repository
+url: https://github.com/duhlin/ha_ssh_reverse_tunnel
+maintainer: duhlin
+# Optional additional metadata (uncomment/add as needed):
+# issues: https://github.com/duhlin/ha_ssh_reverse_tunnel/issues
+# funding: https://github.com/sponsors/duhlin
+# description: Provides the SSH reverse tunnel add-on for Home Assistant.
